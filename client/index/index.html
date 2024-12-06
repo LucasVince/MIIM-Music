@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <ion-icon name="person-circle"></ion-icon>
+        <a href="../user/user.html" target="mainFrame">
+            <p id="username">Username</p>
+        </a>
+    </header>
+    <main>
+        <div id="sideBar">
+            <div>
+                <a href="iframes/home/home.html" target="mainFrame"><button><ion-icon name="home"></ion-icon>Home</button></a>
+                <a href="iframes/inventory/inventory.html" target="mainFrame"><button><ion-icon name="file-tray"></ion-icon>Inventory</button></a>
+                <a href="iframes/add instrument/add instrument.html" target="mainFrame"><button><ion-icon name="add-circle"></ion-icon>add instrument</button></a>
+                <a href="iframes/settings/settings.html" target="mainFrame"><button><ion-icon name="settings"></ion-icon>Settings</button></a>
+            </div>
+            <a href="../login/login.html"><button><ion-icon name="exit"></ion-icon>Log Out</button></a>
+        </div>
+    
+        <iframe name="mainFrame" src="iframes/home/home.html" frameborder="0"></iframe>
+    </main>
+</body>
+</html>
