@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const userModel = require('../DB/models/user.model.js');
+const instrumentModel = require('../DB/models/instrument.model.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -69,7 +70,7 @@ app.delete('/users', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res, next) => {
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
     try {
@@ -85,9 +86,39 @@ app.post('/login', async (req, res, next) => {
             return res.status(401).json({ message: 'Incorrect password' });
         }
 
-        res.status(200).json({ message: 'Login successful', token });
+        return res.status(200).json({ message: 'Login successful', token });
     } catch (err) {
-        next(err);
+        return res.status(500).json({error: err.message});
+    }
+});
+
+app.get('/instruments', async (req, res) => {
+    try {
+        const instrument = await instrumentModel.find();
+        return res.status(200).send(instrument);
+    } catch (err) {
+        return res.status(500).send(err.message);
+    }
+});
+
+app.post('/instruments', async (req, res) => {
+    const { userID, model, brand, type } = req.body;
+
+    try {
+        const instrument = await instrumentModel.create( {
+            user: userID,
+            model,
+            brand,
+            type
+        } );
+
+        await userModel.findByIdAndUpdate(userID, {
+            $push: {instruments: instrument._id}
+        });
+
+        return res.status(200).json( {message: 'Instrument added sucessfully', instrument} );
+    } catch (err) {
+        return res.status(500).json( {error: err.message} );
     }
 });
 

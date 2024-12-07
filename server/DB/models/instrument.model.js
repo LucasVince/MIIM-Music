@@ -5,7 +5,11 @@ const instrumentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    name: {
+    type: {
+        type: String,
+        required: true
+    },
+    model: {
         type: String,
         required: true
     },
@@ -21,4 +25,4 @@ const instrumentSchema = new mongoose.Schema({
 
 const instrumentModel = mongoose.model('Instrument', instrumentSchema);
 
-mondule.exports = instrumentModel;
+module.exports = instrumentModel;

@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add instrument.css">
+    <script src="add instrument.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    
+    <form method="post" id="addItemForm" autocomplete="off">
+        <p>Model: </p>
+        <input type="text" placeholder="Model" id="modelInput">
+        <p>Brand: </p>
+        <input type="text" placeholder="Brand" id="brandInput">
+        <p>Type: </p>
+        <select id="typeSelect">
+            <option value="string">String</option>
+            <option value="percurssion">Percurssion</option>
+            <option value="brass">Brass</option>
+        </select>
+        <button type="submit">Add to inventory</button>
+    </form>
 </body>
 </html>
