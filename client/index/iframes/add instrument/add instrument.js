@@ -20,14 +20,14 @@ const addItem = async event => {
             body: JSON.stringify( {userID, model, brand, type} )
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
             throw new Error(data.message);
         }
 
-        const data = await response.json();
-
         alert(data.message);
-        console.log(data.message);
+        console.log(data.instrument);
     } catch (err) {
         alert(err.message);
         console.log(err.message);

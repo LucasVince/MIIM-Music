@@ -105,6 +105,10 @@ app.post('/instruments', async (req, res) => {
     const { userID, model, brand, type } = req.body;
 
     try {
+        if (!model || !brand || !type) {
+            return res.status(404).json({message: 'Mising data, please try again'});
+        }
+
         const instrument = await instrumentModel.create( {
             user: userID,
             model,
@@ -116,7 +120,21 @@ app.post('/instruments', async (req, res) => {
             $push: {instruments: instrument._id}
         });
 
-        return res.status(200).json( {message: 'Instrument added sucessfully', instrument} );
+        return res.status(200).json( {message: 'Instrument added sucessfully', instrument: instrument} );
+    } catch (err) {
+        return res.status(500).json( {error: err.message} );
+    }
+});
+
+app.delete('/instruments/:id', async (req, res) => {
+    try {
+        const instrument = await instrumentModel.findByIdAndDelete(req.params.id);
+
+        if (!instrument) {
+            res.status(404).json({message: 'instrument not found'});
+        }
+
+        return res.status(200).json({message: 'Instrument deleted seccessfully'});
     } catch (err) {
         return res.status(500).json( {error: err.message} );
     }
