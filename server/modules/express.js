@@ -93,11 +93,21 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/instruments', async (req, res) => {
+    const { userID } = req.query;
+
+    if (!userID) {
+        try {
+            const instruments = await instrumentModel.find();
+            return res.status(200).json({instruments: instruments});
+        } catch (err) {
+            return res.status(500).json({message: err.message});
+        }   
+    }   
     try {
-        const instrument = await instrumentModel.find();
-        return res.status(200).send(instrument);
+        const instruments = await instrumentModel.find( {user: userID} );
+        return res.status(200).json({instruments: instruments});
     } catch (err) {
-        return res.status(500).send(err.message);
+        return res.status(500).json({message: err.message});
     }
 });
 

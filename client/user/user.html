@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+    <link rel="stylesheet" href="user.css">
+    <script src="user.js" defer></script>
+    <title>Account Settings</title>
+</head>
+<body>
+    <header>
+        <a href="javascript:history.back()" id="back-btn">
+            <ion-icon name="arrow-back-circle"></ion-icon>
+        </a>
+    </header>
+    <main id="account-settings">
+        <h1>Account Settings</h1>
+        <form id="accountForm">
+            <div class="form-group">
+                <label for="usernameInput">Change Username:</label>
+                <input type="text" id="usernameInput" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Change Email:</label>
+                <input type="email" id="emailInput" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="passwordInput">Change Password:</label>
+                <input type="password" id="passwordInput" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <label for="languageSelect">Language:</label>
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+
+        <div id="delete-account">
+            <h2>Delete Account</h2>
+            <button id="deleteBtn" class="delete-btn">Delete Account</button>
+        </div>
+    </main>
+</body>
+</html>

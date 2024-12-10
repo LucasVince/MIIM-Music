@@ -1,0 +1,114 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#back-btn {
+    color: #B82834;
+    text-decoration: none;
+}
+
+#back-btn ion-icon {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #B82834;
+    margin-left: 10px;
+}
+
+#inventory-list {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.instrumentDiv {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.instrumentDiv p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.instrumentDiv .id {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.instrumentDiv .modelText {
+    color: #666;
+}
+
+.instrumentDiv .brandText {
+    color: #888;
+}
+
+.deleteInstrumentBtn {
+    background-color: #D32F2F;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.deleteInstrumentBtn:hover {
+    background-color: #c62828;
+}
+
+#no-instruments-msg {
+    font-size: 1.2rem;
+    color: #666;
+    text-align: center;
+    display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .instrumentDiv {
+        max-width: 200px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
