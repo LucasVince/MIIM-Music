@@ -136,9 +136,11 @@ app.post('/instruments', async (req, res) => {
     }
 });
 
-app.delete('/instruments/:id', async (req, res) => {
+app.delete('/instruments', async (req, res) => {
+    const {instrumentID} = req.body;
+
     try {
-        const instrument = await instrumentModel.findByIdAndDelete(req.params.id);
+        const instrument = await instrumentModel.findByIdAndDelete(instrumentID);
 
         if (!instrument) {
             res.status(404).json({message: 'instrument not found'});

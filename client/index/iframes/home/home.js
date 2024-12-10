@@ -21,7 +21,50 @@ window.onload = async () => {
             throw new Error(data.message);
         }
 
-        console.log(data.instruments);
+        const instruments = data.instruments;
+        console.log(instruments);
+
+        const totalInstruments = document.querySelector('#totalInstruments');
+        const lastInstrument = document.querySelector('#lastInstrument');
+        const instrumentType = document.querySelector('#instrumentType');
+
+        const totalInstrumentsText = instruments.length;
+        const lastInstrumentText = instruments[instruments.length - 1].brand;
+        const instrumentTypeText = instruments[instruments.length - 1].type;
+
+        console.log(totalInstrumentsText);
+        console.log(lastInstrumentText);
+
+        totalInstruments.innerHTML = 'Total of instruments: ' + totalInstrumentsText;
+        lastInstrument.innerHTML = 'Last instrument to be added: ' + lastInstrumentText;
+        instrumentType.innerHTML = 'Instrument type: ' + instrumentTypeText;
+
+        const stringInstruments = document.querySelector('#Strings');
+        const percussionInstruments = document.querySelector('#Percussion');
+        const brassInstruments = document.querySelector('#Brass');
+
+        let string = 0;
+        let percussion = 0;
+        let brass = 0;
+
+        instruments.forEach(element => {
+            if (element.type == 'String') {
+                string ++;
+            }
+
+            if (element.type == 'Percussion') {
+                percussion ++;
+            }
+
+            if (element.type == 'Brass') {
+                brass ++;
+            }
+        });
+
+        console.log(string);
+        console.log(percussion);
+        console.log(brass);
+
     } catch (err) {
         alert(err.message);
         console.log(err.message);

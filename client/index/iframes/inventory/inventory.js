@@ -51,6 +51,31 @@ window.onload = async () => {
                 pBrand.classList.add('brandText');
                 pType.classList.add('modelText');
                 btnDelete.classList.add('deleteInstrumentBtn');
+
+                btnDelete.addEventListener('click', async () => {
+                    const instrumentID = element._id;
+
+                    try {
+                        const response = await fetch('http://localhost:8080/instruments', {
+                            method: 'delete',
+                            headers: { 'Content-Type': 'application/json'},
+                            body: JSON.stringify({ instrumentID: instrumentID })
+                        });
+
+                        const data = await response.json();
+
+                        if (!response.ok) {
+                            console.error(data.message);
+                        }
+
+                        window.location.reload();
+
+                        console.log(data.message);
+                    } catch (err) {
+                        alert(err.message);
+                        console.error(err.message);
+                    }
+                });
             });
         }
     } catch (err) {
