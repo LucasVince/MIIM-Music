@@ -28,42 +28,52 @@ window.onload = async () => {
         const lastInstrument = document.querySelector('#lastInstrument');
         const instrumentType = document.querySelector('#instrumentType');
 
-        const totalInstrumentsText = instruments.length;
-        const lastInstrumentText = instruments[instruments.length - 1].brand;
-        const instrumentTypeText = instruments[instruments.length - 1].type;
-
-        console.log(totalInstrumentsText);
-        console.log(lastInstrumentText);
-
-        totalInstruments.innerHTML = 'Total of instruments: ' + totalInstrumentsText;
-        lastInstrument.innerHTML = 'Last instrument to be added: ' + lastInstrumentText;
-        instrumentType.innerHTML = 'Instrument type: ' + instrumentTypeText;
-
         const stringInstruments = document.querySelector('#Strings');
         const percussionInstruments = document.querySelector('#Percussion');
         const brassInstruments = document.querySelector('#Brass');
 
-        let string = 0;
-        let percussion = 0;
-        let brass = 0;
+        if (instruments.length < 1) {
+            totalInstruments.innerHTML = 'Total of instruments: No instruments added yet';
+            lastInstrument.innerHTML = 'Last instrument to be added: No instruments added yet';
+            instrumentType.innerHTML = 'Instrument type: No instruments added yet';
 
-        instruments.forEach(element => {
-            if (element.type == 'String') {
-                string ++;
-            }
+            stringInstruments.innerHTML = ' 🎸 Strings: ' + 0;
+            percussionInstruments.innerHTML = ' 🥁 Percussion: ' + 0;
+            brassInstruments.innerHTML = ' 🎺 Brass: ' + 0;
+        } else {
+            const totalInstrumentsText = instruments.length;
+            const lastInstrumentText = instruments[instruments.length - 1].brand + ' ' + instruments[instruments.length - 1].model;
+            const instrumentTypeText = instruments[instruments.length - 1].type;
 
-            if (element.type == 'Percussion') {
-                percussion ++;
-            }
+            console.log(totalInstrumentsText);
+            console.log(lastInstrumentText);
 
-            if (element.type == 'Brass') {
-                brass ++;
-            }
-        });
+            totalInstruments.innerHTML = 'Total of instruments: ' + totalInstrumentsText;
+            lastInstrument.innerHTML = 'Last instrument to be added: ' + lastInstrumentText;
+            instrumentType.innerHTML = 'Instrument type: ' + instrumentTypeText;
 
-        console.log(string);
-        console.log(percussion);
-        console.log(brass);
+            let string = 0;
+            let percussion = 0;
+            let brass = 0;
+
+            instruments.forEach(element => {
+                if (element.type == 'String') {
+                    string ++;
+                }
+
+                if (element.type == 'Percussion') {
+                    percussion ++;
+                }
+
+                if (element.type == 'Brass') {
+                    brass ++;
+                }
+            });
+
+            stringInstruments.innerHTML = ' 🎸 Strings: ' + string;
+            percussionInstruments.innerHTML = ' 🥁 Percussion: ' + percussion;
+            brassInstruments.innerHTML = ' 🎺 Brass: ' + brass;
+        }
 
     } catch (err) {
         alert(err.message);

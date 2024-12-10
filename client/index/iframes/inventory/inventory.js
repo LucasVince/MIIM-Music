@@ -56,10 +56,9 @@ window.onload = async () => {
                     const instrumentID = element._id;
 
                     try {
-                        const response = await fetch('http://localhost:8080/instruments', {
+                        const response = await fetch(`http://localhost:8080/instruments/${instrumentID}`, {
                             method: 'delete',
-                            headers: { 'Content-Type': 'application/json'},
-                            body: JSON.stringify({ instrumentID: instrumentID })
+                            headers: { 'Content-Type': 'application/json'}
                         });
 
                         const data = await response.json();
